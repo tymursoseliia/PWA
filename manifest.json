@@ -3,21 +3,21 @@
   "name": "Official Casino Mobile App",
   "icons": [
     {
-      "src": "/paso1-images/fb/aa/eb/fbaaebfad58cf8bbc4eb7de1cc0422c1_w192h192.png",
+      "src": "./paso1-images/fb/aa/eb/fbaaebfad58cf8bbc4eb7de1cc0422c1_w192h192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "/paso1-images/fb/aa/eb/fbaaebfad58cf8bbc4eb7de1cc0422c1_w192h192.png",
+      "src": "./paso1-images/fb/aa/eb/fbaaebfad58cf8bbc4eb7de1cc0422c1_w192h192.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "maskable"
     }
   ],
-  "start_url": "/?utm_source=pwa",
+  "start_url": "./?utm_source=pwa",
   "background_color": "#000000",
   "display": "standalone",
-  "scope": "/",
+  "scope": "./",
   "theme_color": "#000000",
   "description": "Лучшие слоты и бонусы в твоем кармане."
 }
