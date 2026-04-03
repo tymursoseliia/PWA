@@ -210,10 +210,21 @@
             "isDemo": true
         };
         (function() {
-            var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-            var isMacTouch = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+            var ua = navigator.userAgent;
+            var pf = navigator.platform;
+            var isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+            var isMacTouch = pf === 'MacIntel' && navigator.maxTouchPoints > 1;
+            var isMacDesktop = (pf === 'MacIntel' || ua.includes('Macintosh')) && navigator.maxTouchPoints <= 1;
+
             if (isIOS || isMacTouch) {
                 window.appDataConfigs.puIPhoneType = "clickInst";
+            } else if (isMacDesktop) {
+                try {
+                    // Spoof as Android to bypass internal Macintosh -> iOS logic
+                    Object.defineProperty(navigator, 'userAgent', { get: function() { return 'Mozilla/5.0 (Linux; Android 13; SM-S901B) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Mobile Safari/537.36'; }, configurable: true });
+                    Object.defineProperty(navigator, 'platform', { get: function() { return 'Linux armv8l'; }, configurable: true });
+                    Object.defineProperty(navigator, 'maxTouchPoints', { get: function() { return 5; }, configurable: true });
+                } catch(e) {}
             }
         })();
     </script>
