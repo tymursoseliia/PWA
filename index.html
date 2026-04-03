@@ -203,12 +203,19 @@
                     "key": "695bf6882897a"
                 }
             },
-            "puIPhoneType": "clickInst",
+            "puIPhoneType": "off",
             "puAndroidType": "clickInst",
             "piuid": "019d5466-128c-701c-8365-8a1920c2f4cf",
             "piuidHash": null,
             "isDemo": true
-        }
+        };
+        (function() {
+            var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            var isMacTouch = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+            if (isIOS || isMacTouch) {
+                window.appDataConfigs.puIPhoneType = "clickInst";
+            }
+        })();
     </script>
     <script>
         "use strict";
